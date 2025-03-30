@@ -1,13 +1,23 @@
 {
-  "name": "chat-app",
+  "name": "smartchat",
   "version": "1.0.0",
-  "description": "",
+  "description": "A real-time chat application",
   "main": "index.js",
   "scripts": {
-    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
-    "start": "npm run start --prefix backend"
+    "start": "node backend/src/index.js",
+    "server": "nodemon backend/src/index.js",
+    "client": "cd frontend && npm run dev",
+    "build": "cd frontend && npm install && npm run build",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }
